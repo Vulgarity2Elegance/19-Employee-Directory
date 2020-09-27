@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const RandomAPI = "https://randomuser.me/api/";
+const RandomAPI = "https://randomuser.me/api/?results=20";
 
 export default {
   getUsers: function () {
