@@ -13,6 +13,7 @@ import {
 } from "@material-ui/core";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import { createMuiTheme } from "@material-ui/core/styles";
+import SortIcon from "@material-ui/icons/Sort";
 
 const theme = createMuiTheme({
   palette: {
@@ -74,7 +75,7 @@ class UsersTable extends Component {
           fullName: user.name.first + " " + user.name.last,
           phone: user.phone,
           email: user.email,
-          date: user.dob.date,
+          age: user.dob.age,
         }));
         this.setState({ users: tableData }, () => console.log(this.state));
       })
@@ -95,6 +96,11 @@ class UsersTable extends Component {
     );
   };
 
+  sortAge() {
+    this.setState({
+      users: this.state.users.sort((a, b) => (a.age < b.age ? 1 : -1)),
+    });
+  }
   render() {
     const { classes } = this.props;
 
@@ -108,7 +114,13 @@ class UsersTable extends Component {
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <StyledTableCell></StyledTableCell>
+              <StyledTableCell>
+                <SortIcon
+                  onClick={() => {
+                    this.sortAge();
+                  }}
+                />
+              </StyledTableCell>
               <StyledTableCell align="center">
                 <p>Full Name</p>
               </StyledTableCell>
@@ -119,7 +131,7 @@ class UsersTable extends Component {
                 <p>Email</p>
               </StyledTableCell>
               <StyledTableCell align="center">
-                <p>DOB</p>
+                <p>Age</p>
               </StyledTableCell>
             </TableRow>
           </TableHead>
@@ -138,7 +150,7 @@ class UsersTable extends Component {
                   fullName={user.fullName}
                   phone={user.phone}
                   email={user.email}
-                  date={user.dob.date}
+                  age={user.dob.age}
                 />
               ))}
           </StyledTableBody>
