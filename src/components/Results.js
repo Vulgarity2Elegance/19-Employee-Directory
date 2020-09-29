@@ -11,7 +11,7 @@ function Results(props) {
       <TableCell align="center">{props.fullName}</TableCell>
       <TableCell align="center">{props.phone}</TableCell>
       <TableCell align="center">{props.email}</TableCell>
-      <TableCell align="center">{props.date}</TableCell>
+      <TableCell align="center">{props.age}</TableCell>
     </TableRow>
   );
 }
